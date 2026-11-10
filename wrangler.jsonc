@@ -1,9 +1,13 @@
-// Cloudflare Workers (static assets). Build with `npm run build`, deploy with `npx wrangler deploy`.
+// Cloudflare Workers (static assets). `npx wrangler deploy` builds the site first (see "build"),
+// so it works even if the Cloudflare dashboard's "Build command" field is left empty.
 // "single-page-application" sends every unknown path to index.html so React Router can handle it.
 // Do not add a `/* /index.html 200` rule to public/_redirects: Cloudflare rejects it as an infinite loop.
 {
   "name": "origin",
   "compatibility_date": "2026-11-01",
+  "build": {
+    "command": "npm run build"
+  },
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application"

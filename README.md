@@ -73,7 +73,7 @@ npm run build
 
 Upload `dist/`. Routing files are included for Cloudflare Workers (`wrangler.jsonc`), Netlify (`netlify.toml`), Vercel (`vercel.json`) and Apache/cPanel (`.htaccess`).
 
-On Cloudflare (Workers & Pages → connect the GitHub repo) use build command `npm run build` and deploy command `npx wrangler deploy`. Do not add a `public/_redirects` file with `/* /index.html 200`: Cloudflare rejects it as an infinite redirect loop. `wrangler.jsonc` already handles routing.
+On Cloudflare (Workers & Pages → connect the GitHub repo) use deploy command `npx wrangler deploy`. The build command can be `npm run build` or left empty: `wrangler.jsonc` runs `npm run build` itself before uploading `dist/`. Do not add a `public/_redirects` file with `/* /index.html 200`: Cloudflare rejects it as an infinite redirect loop. `wrangler.jsonc` already handles routing.
 
 Without the Node API the site runs in **demo mode**: forms and the dashboard work, but data is stored in each visitor's own browser, so enquiries do not reach the team. The dashboard sign-in for demo mode is `demo@originbookspublishing.com` / `demo`. Use Option A for production.
 
